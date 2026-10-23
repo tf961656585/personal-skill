@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# Local secrets and logs
+.env
+.env.*
+*.log
+
+# Runtime data written by context-whale
+context-whale/data/history.jsonl

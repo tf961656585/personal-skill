@@ -1,0 +1,47 @@
+{
+  "version": "0.0.4",
+  "model": "gpt-image-2.5-flare",
+  "source_project": "鲸鱼娘专用",
+  "character_refs": [
+    {"asset_id": "1b4965bb11438748", "role": "B 方向便当原图（角色神态锚点）"},
+    {"asset_id": "07476e7ddda2a556", "role": "chibi 三视图（角色设计锚点）"},
+    {"asset_id": "926eb1df1c02c846", "role": "加班立绘（表情/气质参考）"}
+  ],
+  "assets": {
+    "hero": {
+      "file": "hero-bento.jpg",
+      "asset_id": "713f9f4e497e3d99",
+      "size": "1536x1024",
+      "note": "鲸鱼娘趴在便当盒后，与 B 方向原图同一动作神态"
+    },
+    "avatar": {
+      "file": "avatar.png",
+      "source": "crop of hero-bento",
+      "crop": "590,0,1160,570",
+      "note": "不再单独生成头像，保证与主视觉同一表情"
+    },
+    "icon_sheet": {
+      "asset_id": "20862938ecb26d70",
+      "size": "1536x1024",
+      "layout": "3x2 grid, bottom-right empty"
+    },
+    "icons": {
+      "icon-tools.png": {"cell": "top-left", "caption": "卷轴 + 扳手"},
+      "icon-reason.png": {"cell": "top-middle", "caption": "云朵"},
+      "icon-defs.png": {"cell": "top-right", "caption": "蓝图"},
+      "icon-skills.png": {"cell": "bottom-left", "caption": "书"},
+      "icon-pearl.png": {"cell": "bottom-middle", "caption": "珍珠"}
+    }
+  },
+  "discarded": [
+    {
+      "asset_id": "190b8c88a9e9e4e3",
+      "reason": "单独生成的正脸头像，与便当预览里趴着探头的神态不一致；改用 hero 裁切"
+    }
+  ],
+  "notes": [
+    "gpt-image-2.5-flare 的参数面没有 background=transparent，透明底通过 PNG 平底生成 + Pillow 抠底实现。",
+    "图标从 3x2 图标表裁切，去掉奶油纸背景，输出 RGBA PNG。",
+    "主视觉保留奶油纸背景，作为 hero 使用；头像从同一张图裁出，避免角色漂移。"
+  ]
+}

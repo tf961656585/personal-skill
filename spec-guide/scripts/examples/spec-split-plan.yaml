@@ -1,0 +1,208 @@
+# spec-split-plan.yaml — data-config.md 拆分实战计划（2026-09-12，spec_splitter.py 的输入格式示例）
+#
+# 用法（仓库根执行）：
+#   python3 ~/.agents/skills/spec-guide/scripts/spec_splitter.py split  --plan 本文件 --root .
+#   python3 ~/.agents/skills/spec-guide/scripts/spec_splitter.py values --plan 本文件 --root .
+#   python3 ~/.agents/skills/spec-guide/scripts/spec_splitter.py inbound --plan 本文件 --root .
+#   python3 ~/.agents/skills/spec-guide/scripts/spec_splitter.py check --root Assets/docs --extra web/AGENTS.md
+#
+# 口径：主索引文件（配置表清单 + 核心契约）属设计工作，手写，不在脚本职责内。
+
+source: Assets/docs/spec/systems/data-config.md
+out_dir: Assets/docs/spec/systems/data-config
+main_name: data-config.md
+values_file: first-values.yaml
+changelog_name: changelog.md
+date: "2026-09-12"
+
+frontmatter: |
+  ---
+  type: spec
+  status: Active
+  layer: spec-anchored
+  change-model: living-spec
+  review-trigger: 对应配置表字段、约束或数值模型变更时复审
+  last-reviewed: 2026-09-12
+  ---
+
+domains:
+  campaign: {title: 战役与关卡域配置, desc: 章节、关卡、地图（手工锚点遗留结构）、波次时间轴与全局刷怪的配置契约}
+  weapon: {title: 武器域配置, desc: 武器配置 SO（基类与子类参数接口）的配置契约}
+  equipment: {title: 装备域配置, desc: 装备基础/培养、装备掉落、词条池、套装、神话词条、合成与角标评分的配置契约}
+  shop: {title: 商店与抽取域配置, desc: 抽取全局、卡池、每日商店与广告补给的配置契约}
+  player: {title: 角色与输入域配置, desc: 玩家（PlayerData）、角色（ModeljiData）与摇杆输入的配置契约}
+  combat: {title: 战斗实体域配置, desc: 敌人、全局战斗、宝石与异常状态的配置契约}
+  skill: {title: 技能与局内成长域配置, desc: 经验曲线、技能分解经验、羁绊、技能稀有度、技能池与合成配方的配置契约}
+  map-scene: {title: 地图与场景元素域配置, desc: 地图生成参数、障碍物、道具、宝箱、祭坛、缓存信标、随机机关、障碍机关参数、机关文案与场景奖励池的配置契约}
+  meta-progression: {title: 局外成长与结算域配置, desc: 结算参数、成长投资、成长重置规则与训练师等级的配置契约}
+
+sections:
+  - {title: 章节配置表详细契约, domain: campaign}
+  - {title: 关卡配置表详细契约, domain: campaign}
+  - {title: 地图配置, domain: campaign}
+  - {title: 武器配置表详细契约, domain: weapon}
+  - {title: 装备配置表详细契约, domain: equipment}
+  - {title: 装备掉落配置表详细契约, domain: equipment}
+  - {title: 词条池配置表详细契约, domain: equipment}
+  - {title: 套装配置表详细契约, domain: equipment}
+  - {title: 神话词条配置表详细契约, domain: equipment}
+  - {title: 合成配置表详细契约, domain: equipment}
+  - {title: 装备角标评分配置表详细契约, domain: equipment}
+  - {title: 抽取全局配置表详细契约, domain: shop}
+  - {title: 卡池配置表详细契约, domain: shop}
+  - {title: 每日商店配置表详细契约, domain: shop}
+  - {title: 广告补给配置表详细契约, domain: shop}
+  - {title: 玩家配置表详细契约, domain: player}
+  - {title: 角色配置表详细契约, domain: player}
+  - {title: 敌人配置表详细契约, domain: combat}
+  - {title: 全局战斗配置表详细契约, domain: combat}
+  - {title: 宝石配置表详细契约, domain: combat}
+  - {title: 异常状态配置表详细契约, domain: combat}
+  - {title: 经验升级曲线配置表详细契约, domain: skill}
+  - {title: 技能分解经验配置表详细契约, domain: skill}
+  - {title: 羁绊配置表详细契约, domain: skill}
+  - {title: 技能稀有度配置表详细契约, domain: skill}
+  - {title: 技能池配置表详细契约, domain: skill}
+  - {title: 合成配方配置表详细契约, domain: skill}
+  - {title: 波次时间轴配置表详细契约, domain: campaign}
+  - {title: 全局刷怪配置表详细契约, domain: campaign}
+  - {title: 摇杆配置表详细契约, domain: player}
+  - {title: 障碍物配置表详细契约, domain: map-scene}
+  - {title: 道具配置表详细契约, domain: map-scene}
+  - {title: 宝箱配置表详细契约, domain: map-scene}
+  - {title: 祭坛配置表详细契约, domain: map-scene}
+  - {title: 缓存信标配置表详细契约, domain: map-scene}
+  - {title: 地图生成参数配置表详细契约, domain: map-scene}
+  - {title: 击杀充能塔配置表详细契约, domain: map-scene}
+  - {title: 引导闸门配置表详细契约, domain: map-scene}
+  - {title: "EMP 节点配置表详细契约", domain: map-scene}
+  - {title: 障碍机关参数配置表详细契约, domain: map-scene}
+  - {title: 场景机关接近说明文案配置表详细契约, domain: map-scene}
+  - {title: 场景奖励池配置表详细契约, domain: map-scene}
+  - {title: 结算参数配置表详细契约, domain: meta-progression}
+  - {title: 成长投资配置表详细契约, domain: meta-progression}
+  - {title: 成长重置规则配置表详细契约, domain: meta-progression}
+  - {title: 训练师等级配置表详细契约, domain: meta-progression}
+
+extra_anchors:
+  培养配置: equipment
+
+temporal_replacements:
+  - old: "**实现状态**：SkillPoolData 类型已落地（`Scripts/Data/SkillPoolData.cs`），但 LevelData 代码层暂未放入此字段，待技能系统运行时逻辑接入时统一补入（避免字段悬空）"
+    new: "SkillPoolData SO 契约见技能池配置表详细契约"
+  - old: "> **边界语义修订（2026-09-08，无限地图）**：战场随机化立项后本作默认战场为**无限地图**——MapBounds 硬边界语义废除，玩家位置 clamp 与相机视野 clamp 不再消费地图矩形（修订见 [map.md](map.md) MapBounds 边界语义修订）。本节数据契约降级为**手工锚点承载物的遗留结构**（承载出生点与初始锚点元素）；地图生成参数改由下方「地图生成参数配置表详细契约」承载。以下原契约存档，仅当未来引入有限边界地图时恢复。"
+    new: "> **边界语义修订（无限地图）**：战场随机化立项后本作默认战场为**无限地图**——MapBounds 硬边界语义废除，玩家位置 clamp 与相机视野 clamp 不再消费地图矩形（修订口径见 [map.md](map.md) MapBounds 边界语义修订）。本节契约降级为**手工锚点承载物的遗留结构**（承载出生点与初始锚点元素）；地图生成参数由本文件「地图生成参数配置表详细契约」承载。以下原契约存档，仅当未来引入有限边界地图时恢复。"
+
+value_blocks:
+  - file: equipment.md
+    start_prefix: "**首版数值（需配置表与实测验证；折合局数的产出锚定推导见"
+    end_type: bold
+    end_marker: "**设计说明：**"
+    pointer: "> **首版数值**（白/蓝/紫/粉四档强化曲线、突破消耗与单件合计）：见 [first-values.yaml](first-values.yaml)「培养配置」。折合局数的产出锚定推导见 [../equipment.md](../equipment.md) 培养章节。"
+  - file: equipment.md
+    start_prefix: "**首版数值（首版设计值，需配置表与实测验证）：**"
+    end_type: heading
+    end_marker: "## 词条池配置表详细契约"
+    pointer: "> **首版数值**（T1–T4 档位规则、公共字段与单局产出期望）：见 [first-values.yaml](first-values.yaml)「装备掉落配置」。"
+  - file: equipment.md
+    start_prefix: "**首版词条清单（20 条，首版设计值，需配置表与实测验证）：**"
+    end_type: heading
+    end_marker: "## 套装配置表详细契约"
+    pointer: "> **首版词条清单**（20 条四类词条的效果定义、roll 区间、部位权重与黑名单矩阵）：见 [first-values.yaml](first-values.yaml)「词条池配置」。"
+  - file: equipment.md
+    start_prefix: "**首版套装清单（5 套，首版设计值，需配置表与实测验证）：**"
+    end_type: text
+    end_marker: "套装件覆盖规则："
+    pointer: "> **首版套装清单**（5 套 × 2/3/5 阶梯效果与累计口径）：见 [first-values.yaml](first-values.yaml)「套装配置」。"
+  - file: equipment.md
+    start_prefix: "**首版神话词条清单（7 条，首版设计值，需配置表与实测验证）：**"
+    end_type: heading
+    end_marker: "## 合成配置表详细契约"
+    pointer: "> **首版神话词条清单**（7 条效果、参数与权重）：见 [first-values.yaml](first-values.yaml)「神话词条配置」。"
+  - file: equipment.md
+    start_prefix: "**首版数值（首版设计值，需配置表与实测验证）：**"
+    end_type: heading
+    end_marker: "## 装备角标评分配置表详细契约"
+    pointer: "> **首版数值**：见 [first-values.yaml](first-values.yaml)「合成配置」。"
+  - file: equipment.md
+    start_prefix: "**首版数值（首版创作值，需配置表与实测验证；锚点 = damage 百分点 1 分）：**"
+    end_type: bold
+    end_marker: "**设计说明：**"
+    pointer: "> **首版数值**（attrWeights 权重表与 weaponMultScore / minAdvantage / hysteresisRatio 阈值）：见 [first-values.yaml](first-values.yaml)「装备角标评分配置」。"
+  - file: shop.md
+    start_prefix: "**首版数值（1 份，全局唯一）：**"
+    end_type: heading
+    end_marker: "## 卡池配置表详细契约"
+    pointer: "> **首版数值**（含导出指标，供公示与验收）：见 [first-values.yaml](first-values.yaml)「抽取全局配置」。"
+  - file: shop.md
+    start_prefix: "**首版数值（7 份，每部位 1 份）：**"
+    end_type: heading
+    end_marker: "## 每日商店配置表详细契约"
+    pointer: "> **首版数值**（7 份池清单与档内权重结构）：见 [first-values.yaml](first-values.yaml)「卡池配置」。"
+  - file: shop.md
+    start_prefix: "**首版数值（1 份，全局唯一）：**"
+    end_type: heading
+    end_marker: "## 广告补给配置表详细契约"
+    pointer: "> **首版数值**：见 [first-values.yaml](first-values.yaml)「每日商店配置」。"
+  - file: shop.md
+    start_prefix: "**首版数值（1 份，全局唯一）：**"
+    end_type: heading
+    end_marker: "## 变更记录"
+    pointer: "> **首版数值**：见 [first-values.yaml](first-values.yaml)「广告补给配置」。"
+  - file: skill.md
+    start_prefix: "**首版数值**（供策划调参起点）："
+    end_type: bold
+    end_marker: "**设计说明：**"
+    pointer: "> **首版数值**（品质基数 × 等级系数）：见 [first-values.yaml](first-values.yaml)「技能分解经验配置」。"
+
+# 范围口径：spec 目录 + 工程内引用；proposals/ 与 prototype/ 的历史裁决稿是冻结记录，不改写
+inbound_roots: ["Assets/docs/spec", "web"]
+
+keywords:
+  - ["场景机关接近说明文案配置表", "map-scene"]
+  - ["地图生成参数配置表", "map-scene"]
+  - ["装备角标评分配置表", "equipment"]
+  - ["技能分解经验配置表", "skill"]
+  - ["经验升级曲线配置表", "skill"]
+  - ["装备掉落配置表", "equipment"]
+  - ["成长重置规则配置表", "meta-progression"]
+  - ["训练师等级配置表", "meta-progression"]
+  - ["波次时间轴配置表", "campaign"]
+  - ["技能稀有度配置表", "skill"]
+  - ["异常状态配置表", "combat"]
+  - ["神话词条配置表", "equipment"]
+  - ["合成配方配置表", "skill"]
+  - ["结算参数配置表", "meta-progression"]
+  - ["成长投资配置表", "meta-progression"]
+  - ["障碍机关参数表", "map-scene"]
+  - ["词条池配置表", "equipment"]
+  - ["培养/合成配置表", "equipment"]
+  - ["商店四张配置表", "shop"]
+  - ["每日商店配置表", "shop"]
+  - ["套装配置表", "equipment"]
+  - ["技能池配置表", "skill"]
+  - ["摇杆配置表", "player"]
+  - ["羁绊配置表", "skill"]
+  - ["关卡配置表", "campaign"]
+  - ["章节配置表", "campaign"]
+  - ["合成配置表", "equipment"]
+  - ["敌人配置表", "combat"]
+  - ["玩家配置表", "player"]
+  - ["角色配置表", "player"]
+  - ["培养配置表", "equipment"]
+  - ["全局刷怪配置表", "campaign"]
+  - ["宝石配置", "combat"]
+  - ["BiomesDef", "map-scene"]
+  - ["BiomeDef", "map-scene"]
+  - ["地图配置章节", "campaign"]
+  - ["地图配置", "campaign"]
+
+plain:
+  - ["data-config.md 波次时间轴配置表", "data-config/campaign.md 波次时间轴配置表"]
+  - ["见 data-config.md）", "见 data-config/campaign.md 全局刷怪配置表）"]
+  - ["归 data-config.md，MapBounds", "归 data-config/campaign.md，MapBounds"]
+  - ["data-config 结算参数配置表", "data-config/meta-progression.md 结算参数配置表"]
+  - ["见 data-config 训练师等级配置表", "见 data-config/meta-progression.md 训练师等级配置表"]
+  - ["见 data-config 契约", "见 data-config/shop.md 抽取全局配置表契约"]
+  - ["与 data-config.md 地图生成参数配置表", "与 data-config/map-scene.md 地图生成参数配置表"]
+  - ["详见 [data-config.md](systems/data-config.md)", "详见 [equipment.md](systems/data-config/equipment.md#装备掉落配置表详细契约)"]
