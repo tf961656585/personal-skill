@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mermaid Business Flowchart"
+  short_description: "Align business logic with Mermaid flowcharts and save only after confirmation"
+  default_prompt: "Use $mermaid-business-flowchart to convert business requirements into Mermaid flowcharts, iterate with user review, and only save diagrams to the repository after explicit confirmation."
