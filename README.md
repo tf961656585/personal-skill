@@ -19,7 +19,7 @@
 | `mermaid-business-flowchart` | 用 Mermaid 流程图把业务需求转化为可评审、可落盘的流程协议 |
 | `playwright-env` | 本机 Playwright 环境口径：npm 全局链路、浏览器池保护、升级重置与排障 |
 | `problem-triage` | 问题分诊与重构信号判断：何时停止打补丁改做重构、如何对待用户给的具体实例 |
-| `product-context` | 面向非技术读者的表述规范：把实现语言翻译成业务语言，减少信息对齐损失 |
+| `product-context` | 默认对外表述规范：把仓库状态翻译成产品行为、影响与待办（默认读者是产品经理） |
 | `project-entry` | 项目入口与文档地图，含 `memory/` 读协议与设计基准回执 |
 | `prototype-standard` | 零构建 HTML 交互原型的开发标准、文件 Schema、审计与巡检脚本 |
 | `reflect` | 会话级反思与跨会话记忆沉淀，仅在显式调用时使用 |
