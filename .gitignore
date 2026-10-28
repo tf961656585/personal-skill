@@ -16,4 +16,25 @@ node_modules/
 *.log
 
 # Runtime data written by context-whale
-context-whale/data/history.jsonl
+skills/context-whale/data/history.jsonl
+
+# Local-only skills: bodies live under skills/ for version control convenience
+# but are not published with this repo. ~/.agents/skills links to skills/.
+skills/agents-sdk/
+skills/cloudflare/
+skills/cloudflare-email-service/
+skills/cloudflare-one/
+skills/cloudflare-one-migrations/
+skills/de-ai-flavor/
+skills/durable-objects/
+skills/iart-cli/
+skills/mediabunny/
+skills/pdf/
+skills/playwright-cli/
+skills/ppt-builder/
+skills/sandbox-sdk/
+skills/skill-creator/
+skills/turnstile-spin/
+skills/wechat-article-crafter/
+skills/workers-best-practices/
+skills/wrangler/

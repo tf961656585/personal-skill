@@ -2,13 +2,14 @@
 
 一组面向 AI coding agent 的工作流 skill，覆盖需求裁决、设计分层、实现纪律、交付验收、测试治理、失效表示治理与上下文可视化。
 
-每个目录都是一个独立的 skill，核心文件为 `SKILL.md`；部分 skill 带有 `references/`（细则）、`scripts/`（可执行工具）或 `assets/`（静态素材）。
+`skills/` 下每个目录都是一个独立的 skill，核心文件为 `SKILL.md`；部分 skill 带有 `references/`（细则）、`scripts/`（可执行工具）或 `assets/`（静态素材）。
+
+仓库本地还可能有仅供自己使用、已列入 `.gitignore` 的 skill 目录：它们同样放在 `skills/` 下一起管理，但不随仓库分发，也不会出现在下表中。
 
 ## Skill 一览
 
 | Skill | 用途 |
 |---|---|
-| `clarification-spiral` | 澄清螺旋：苏格拉底式追问框架，把模糊表述提炼成清晰、可执行的真实需求 |
 | `context-whale` | 仅显式 `/context-whale` 调用：读取本机会话记录，把上下文窗口构成渲染成便当图报告，并输出可分析 JSON |
 | `decision-question` | 提交待决策项时的写作规范：每个裁决点自带完整上下文链，用用户能懂的语言写出 |
 | `delivery-check` | 交付前门禁清单：确认主链、单一实现、残留、测试、设计同步证据、行为验收与视觉交接 |
@@ -33,18 +34,22 @@
 
 ## 安装
 
-把需要的 skill 目录链接到 harness 的 skills 目录即可。以 ZCode / Claude Code 常见的 `~/.agents/skills` 为例：
+所有 skill 都放在 `skills/` 下，因此最省事的方式是把整个目录链到 harness 的 skills 目录。以 ZCode / Claude Code 常见的 `~/.agents/skills` 为例：
 
 ```bash
 git clone https://github.com/tf961656585/personal-skill.git
 cd personal-skill
 
-# 链接单个 skill
-ln -s "$PWD/spec-guide" ~/.agents/skills/spec-guide
+# 整个目录一次链接（推荐）
+ln -s "$PWD/skills" ~/.agents/skills
+```
 
-# 或链接全部
-for d in */; do
-  ln -s "$PWD/${d%/}" ~/.agents/skills/"${d%/}"
+如果 harness 的 skills 目录下已经有别的内容、不能整体替换，就逐个链接：
+
+```bash
+for d in skills/*/; do
+  name="$(basename "$d")"
+  ln -s "$PWD/skills/$name" ~/.agents/skills/"$name"
 done
 ```
 
@@ -64,7 +69,7 @@ done
 
 - 所有 skill 都在本地运行，不包含 API Key、Token 或任何凭据，也不会把数据上传到外部服务。
 - `context-whale` 会读取本机的 harness 会话记录（如 `~/.zcode`、`~/.claude/projects`、`~/.codex`）用于统计上下文构成；输出只写入你指定的目录。
-- `context-whale/data/history.jsonl` 是运行时生成的本地统计历史，已加入 `.gitignore`，不会进入版本库。
+- `skills/context-whale/data/history.jsonl` 是运行时生成的本地统计历史，已加入 `.gitignore`，不会进入版本库。
 
 ## License
 
