@@ -256,7 +256,9 @@ def lint_changelog_section(path: Path, fm: dict[str, str], text: str,
                            findings: list[Finding]) -> None:
     """spec-anchored / spec-as-source 必须有变更记录节（创建时即初始化）。"""
     if fm.get("type") == "spec" and fm.get("layer") in {"spec-anchored", "spec-as-source"}:
-        if not re.search(r"^#{1,6}\s*变更记录", text, re.MULTILINE):
+        # 标题允许带章节编号前缀（`## 13. 变更记录` / `## 1.2 变更记录`）：规范要求的是
+        # 「有变更记录节」，不是标题一字不差；全篇带编号的 spec 不应因此被判缺节。
+        if not re.search(r"^#{1,6}\s*(?:\d+(?:\.\d+)*[.、]?\s*)?变更记录", text, re.MULTILINE):
             findings.append(Finding(
                 "blocking", path, 1,
                 f"layer={fm['layer']} 的 spec 缺少「## 变更记录」节（创建时即应初始化）",

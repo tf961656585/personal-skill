@@ -117,6 +117,13 @@ class DesignLintTests(unittest.TestCase):
             report = lint_text(tmpdir, "docs/spec/order.md", bad)
             self.assertTrue(any("变更记录" in m for m in blocking_messages(report)))
 
+    def test_changelog_heading_with_section_number_passes(self):
+        """标题带章节编号（`## 13. 变更记录`）是合法形态：规范要求有该节，不要求标题一字不差。"""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            good = VALID_SPEC.replace("## 变更记录", "## 13. 变更记录")
+            report = lint_text(tmpdir, "docs/spec/order.md", good)
+            self.assertFalse(any("变更记录" in m for m in blocking_messages(report)))
+
     def test_broken_markdown_link_fails(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             bad = VALID_SPEC + "\n详见[订单契约](./contract.yaml)。\n"
