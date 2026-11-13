@@ -3,7 +3,7 @@ name: stale-representation
 description: |
   变更继承面协议：找出改动会让哪些「第二事实源」变成假话，并逐项处置——文档、代码注释、prompt/skill、配置示例、错误消息、测试名、mock/seed、索引/map、缓存/看板、硬编码外部假设等。
   当改动会改变行为、默认值、命名、契约、降级路径、入口、数据形状或对外部世界的假设时使用；方案阶段列出清单，执行中随改随清，交付前逐项核验。纯格式/措辞改动不触发。
-  不适用：spec 文本内部变更（走 spec-guide 场景 C）；测试旧行为固化（走 test-linkage）；UI 文案可懂性（走 ui-copy-check）；memory 条目失效（走 reflect）；跨任务存量巡检（走 repo-hygiene）。
+  不适用：spec 文本内部变更（走 spec-guide 场景 C）；测试旧行为固化（走 test-linkage）；UI 文案可懂性（走 ui-copy-check）；memory 条目失效（走 memory 插件）；跨任务存量巡检（走 repo-hygiene）。
 ---
 
 # 失效表示（stale-representation）
@@ -121,7 +121,7 @@ S1 done | S3 open
 - spec 文本内部变更 → spec-guide 场景 C；本 skill 只处理 spec 变更对外部表示的波及。
 - 测试旧行为固化 → test-linkage。
 - UI 文案可懂性 → ui-copy-check；本 skill 只管「是否还真实」。
-- memory 条目失效 → reflect；本 skill 的 `memory` 形态指 AGENTS / skill / prompt / 会话摘要等指令型表示。
+- memory 条目失效 → memory 插件；本 skill 的 `memory` 形态指 AGENTS / skill / prompt / 会话摘要等指令型表示。
 - 多份设计产物对照 → design-review。
 - 跨任务存量巡检 → repo-hygiene。
 - 任务级临时文件、调试产物 → sweep。
@@ -135,7 +135,7 @@ S1 done | S3 open
 - 写「可能有过时文档」而不给定位与原文。
 - 无证据标 `done`，无探针标 `na`。
 - 把清单写进仓库文档或 spec 附录。
-- 重复 test-linkage / spec-guide / ui-copy-check / reflect 的活。
+- 重复 test-linkage / spec-guide / ui-copy-check / memory 插件的活。
 - 用 confidence / priority 字段逃避判断。
 - 对历史注记、生成物、已正确的副本误报。
 - 在纯格式任务上制造继承面。

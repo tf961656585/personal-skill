@@ -224,7 +224,7 @@ spec-anchored / spec-as-source 层级的 spec 必须纳入生命周期状态机�
 1. **变更来源**：确定触发变更的原因。常见来源：
    - 需求变更、实现发现、review 意见、bug 修复
    - 原型验收中拍板的契约/边界/状态所有权决策回写
-   - **reflect 提案**——reflect 在 `memory/proposals/` 发现 spec 矛盾或双线实现时，提案转本场景收口（衔接 reflect Step 4）
+   - **memory 插件提案**——memory 插件在 `memory/proposals/` 发现 spec 矛盾或双线实现时，提案转本场景收口（衔接 memory 插件 `memory_propose`）
    - **测试变更**——测试用例增删改触发对关联 spec 验收项的检查（衔接 `scripts/trace_acceptance.py` 的反向追溯，孤儿测试即典型信号）
    - **sweep 清理发现**——sweep 扫到"与本轮结论矛盾的旧口径"且对象是 spec 时，转本场景收口（衔接 sweep 执行流程）
 2. **变更范围**：哪些 spec 节受影响。
@@ -308,7 +308,7 @@ python3 "$HOME/.agents/skills/spec-guide/scripts/trace_acceptance.py" --spec <sp
 
 - **design-guide**：设计层入口与载体选择的上游；本 skill 只接收其路由结论。
 - **design-review**：跨产物对照审查的出口；本 skill 场景 B 只做单份质量审计，B3 的跨产物线索转给它。
-- **reflect**：memory 提案里的 spec 矛盾/双线实现，收口走场景 C。
+- **memory 插件**：memory 提案里的 spec 矛盾/双线实现，收口走场景 C。
 - **sweep**：任务收尾的工作区残留清理；spec 文本的变更即清理在场景 C2 内完成。
 - **mermaid-business-flowchart**：流程图标准与校验器（能力引用；当前环境 skill 名 `mermaid-business-flowchart`）。独立流程文档落 `docs/flowcharts/`，随 spec 内嵌的流程图跟随 spec 目录。
 

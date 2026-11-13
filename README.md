@@ -21,9 +21,8 @@
 | `playwright-env` | 本机 Playwright 环境口径：npm 全局链路、浏览器池保护、升级重置与排障 |
 | `problem-triage` | 问题分诊与重构信号判断：何时停止打补丁改做重构、如何对待用户给的具体实例 |
 | `product-context` | 默认对外表述规范：把仓库状态翻译成产品行为、影响与待办（默认读者是产品经理） |
-| `project-entry` | 项目入口与文档地图，含 `memory/` 读协议与设计基准回执 |
+| `project-entry` | 项目入口与文档地图，含 `memory/` 读协议（记忆插件工具优先）与设计基准回执 |
 | `prototype-standard` | 零构建 HTML 交互原型的开发标准、文件 Schema、审计与巡检脚本 |
-| `reflect` | 会话级反思与跨会话记忆沉淀，仅在显式调用时使用 |
 | `repo-hygiene` | 仓库级周期卫生巡检：机制失灵与产物失管的存量扫描，输出分级报告交用户裁决 |
 | `spec-guide` | Spec / ADR / 契约文档的编写、单份质量审查与维护，含一致性校验脚本 |
 | `stale-representation` | 变更继承面协议：找出改动后失效的第二事实源（文档、注释、prompt、配置、mock、索引、外部假设）并逐项处置 |
@@ -31,6 +30,8 @@
 | `test-linkage` | 测试与 spec 的程序化关联，以及孤儿、沉睡、过时测试的治理 |
 | `ui-copy-check` | UI 文案的用户视角守卫：空态、错误 / 成功提示、按钮、引导语、提示气泡 |
 | `visual-handoff` | 视觉交付与人工验收规范：agent 只做程序化检查，视觉通过权交给用户 |
+
+`reflect` 已迁出为 DSH 记忆插件（`~/Documents/dsh-plugin/dsh-memory`），不再作为 skill 分发；旧版归档在 `archives/`。
 
 ## 安装
 
@@ -61,7 +62,7 @@ done
 
 - `context-whale`：Python 3；重新生成图片素材时需要 Pillow 与正在运行的 IARTStudio。
 - `prototype-standard`：Node.js；页面巡检脚本使用 Playwright。
-- `spec-guide` / `test-linkage` / `reflect`：Python 3。
+- `spec-guide` / `test-linkage`：Python 3。
 
 脚本缺失依赖时会给出提示，不影响 skill 的说明性内容。
 
